@@ -1,7 +1,7 @@
 Akka, Scala, sbt template
 =========================
 
-A [giter8] template for [Akka] 2.0 projects using [Scala] and [sbt].
+A [giter8] template for [Akka] 2.1.0 projects using [Scala] and [sbt].
 
 License
 -------
