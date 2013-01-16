@@ -2,7 +2,7 @@ package $organization$
 
 import akka.actor._
 import akka.pattern.ask
-import akka.util.duration._
+import scala.concurrent.duration._
 import akka.util.Timeout
 
 case object Tick
@@ -19,6 +19,7 @@ class Counter extends Actor {
 
 object $name;format="Camel"$ extends App {
   val system = ActorSystem("$name;format="Camel"$")
+  implicit val ec = system.dispatcher
 
   val counter = system.actorOf(Props[Counter])
 
@@ -26,7 +27,7 @@ object $name;format="Camel"$ extends App {
   counter ! Tick
   counter ! Tick
 
-  implicit val timeout = Timeout(5 seconds)
+  implicit val timeout = Timeout(5.seconds)
 
   (counter ? Get) onSuccess {
     case count => println("Count is " + count)
